@@ -1,0 +1,19 @@
+pragma solidity >=0.4.22 <0.6.0;
+contract food
+{
+ mapping(string=>uint256) entry;
+ address owner=msg.sender;
+ function addfood(string memory fooditem)
+ public returns(uint256 data)
+ {
+ require(msg.sender==owner);
+ uint256 t=block.timestamp;
+ entry[fooditem]=t;
+ return t;
+ }
+ function verification(string memory fooditem)view
+ public returns(uint256 data)
+ {
+ return entry[fooditem];
+ }
+} 
